@@ -3,12 +3,12 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import './App.css';
-import Choice from './components/input/Choice';
+import Choices from './components/input/Choices';
 
 function App() {
   return (
     <div className="App">
-      <Choice />
+      <Choices />
     </div>
   );
 }
