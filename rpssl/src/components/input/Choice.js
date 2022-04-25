@@ -2,18 +2,18 @@
 /* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@material-ui/core';
 
 function Choice({ choice }) {
   return (
-    <Button>
+    <figure>
       <img
-        src={require(`../../assets/choices/${choice}.png`)}
-        alt={choice}
+        src={require(`../../assets/choices/${choice.name}.png`)}
+        alt={choice.name}
         width="300"
         height="300"
       />
-    </Button>
+      <figcaption>{choice.name}</figcaption>
+    </figure>
   );
 }
 

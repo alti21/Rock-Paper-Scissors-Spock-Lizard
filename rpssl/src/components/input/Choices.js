@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from '@material-ui/core';
 import Choice from './Choice';
 
 function Choices({ choices }) {
@@ -7,7 +8,9 @@ function Choices({ choices }) {
   return (
     <div>
       {choices.map((choice) => (
-        <Choice key={choice.id} choice={choice.name} />
+        <Button>
+          <Choice key={choice.id} choice={choice} />
+        </Button>
       ))}
     </div>
   );
