@@ -9,8 +9,4 @@ export const getRandomChoice = () =>
   axios.get(`${api}/choice`).then((response) => response);
 
 export const playRound = (data) =>
-  axios.post(`${api}/play`, data).then((response) => {
-    console.log(response);
-    console.log(response.data);
-    return response;
-  });
+  axios.post(`${api}/play`, data).then((response) => response);

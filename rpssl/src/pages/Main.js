@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllChoices } from '../api/GameAPI';
+import { getAllChoices, playRound } from '../api/GameAPI';
 import Choices from '../components/input/Choices';
 
 function Main() {
@@ -19,12 +19,20 @@ function Main() {
     };
   }, []);
 
+  const pickChoice = (choiceId) => {
+    const playerChoice = {
+      player: choiceId,
+    };
+    console.log(playerChoice);
+    playRound(playerChoice).then((response) => console.log(response.data));
+  };
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
   return (
     <div>
-      <Choices choices={choiceList} />
+      <Choices choices={choiceList} pickChoice={pickChoice} />
     </div>
   );
 }

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import Choice from './Choice';
 
-function Choices({ choices }) {
+function Choices({ choices, pickChoice }) {
   // const choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
   return (
     <div>
       {choices.map((choice) => (
-        <Button>
+        <Button onClick={() => pickChoice(choice.id)}>
           <Choice key={choice.id} choice={choice} />
         </Button>
       ))}
@@ -23,6 +23,7 @@ Choices.propTypes = {
       name: PropTypes.string.isRequired,
     })
   ).isRequired,
+  pickChoice: PropTypes.func.isRequired,
 };
 
 export default Choices;
