@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getAllChoices, playRound } from '../api/GameAPI';
 import Choices from '../components/input/Choices';
+import ResultsDisplay from '../components/output/ResultsDisplay';
 
 function Main() {
   const [choiceList, setChoiceList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [gameResults, setGameResults] = useState({});
 
   useEffect(() => {
     let unmounted = false;
@@ -24,7 +26,10 @@ function Main() {
       player: choiceId,
     };
     console.log(playerChoice);
-    playRound(playerChoice).then((response) => console.log(response.data));
+    playRound(playerChoice).then((response) => {
+      // console.log(response);
+      setGameResults(response.data);
+    });
   };
 
   if (isLoading) {
@@ -32,6 +37,7 @@ function Main() {
   }
   return (
     <div>
+      <ResultsDisplay choices={choiceList} gameResults={gameResults} />
       <Choices choices={choiceList} pickChoice={pickChoice} />
     </div>
   );
